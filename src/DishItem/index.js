@@ -1,3 +1,4 @@
+
 import './index.css'
 
 const DishItem = ({
@@ -28,7 +29,7 @@ const DishItem = ({
   }
 
   const renderControllerButton = () => (
-    <div className="controller-container d-flex align-item-center bg-success">
+    <div className="controller-container d-flex align-items-center bg-success">
       <button className="button" type="button" onClick={onDecreaseQuantity}>
         -
       </button>
@@ -57,9 +58,7 @@ const DishItem = ({
           <p className="not-availability-text text-danger">Not available</p>
         )}
         {addonCat.length !== 0 && (
-          <p className="addon-availability-text mb-0">
-            Customizations available
-          </p>
+          <p className="addon-availability-text">Customizations available</p>
         )}
       </div>
 
