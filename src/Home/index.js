@@ -1,3 +1,4 @@
+
 import {useState, useEffect} from 'react'
 
 import Header from '../Header'
@@ -10,7 +11,8 @@ const Home = () => {
   const [response, setResponse] = useState([])
   const [activeCategoryId, setActiveCategoryId] = useState('')
 
-  const {cartItems, setCartItems} = useState([])
+  const [cartItems, setCartItems] = useState([])
+
   const addItemToCart = dish => {
     const isAlreadyExists = cartItems.find(item => item.dishId === dish.dishId)
     if (!isAlreadyExists) {
@@ -84,6 +86,7 @@ const Home = () => {
     response.map(eachCategory => {
       const onClickHandler = () =>
         onUpdateActiveCategoryIdx(eachCategory.menuCategoryId)
+
       return (
         <li
           className={`each-tab-item ${
@@ -94,7 +97,10 @@ const Home = () => {
           key={eachCategory.menuCategoryId}
           onClick={onClickHandler}
         >
-          <button type="button" className="mt-0 ms-2 me-2 tab-category-button">
+          <button
+            type="button"
+            className="mt-0 mb-0 ms-2 me-2 tab-category-button"
+          >
             {eachCategory.menuCategory}
           </button>
         </li>
@@ -105,6 +111,7 @@ const Home = () => {
     const {categoryDishes} = response.find(
       eachCategory => eachCategory.menuCategoryId === activeCategoryId,
     )
+
     return (
       <ul className="m-0 d-flex flex-column dishes-list-container">
         {categoryDishes.map(eachDish => (
@@ -125,6 +132,7 @@ const Home = () => {
       <div className="spinner-border" role="status" />
     </div>
   )
+
   return isLoading ? (
     renderSpinner()
   ) : (
